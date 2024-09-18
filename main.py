@@ -5,3 +5,10 @@ class Weapon(ABC):
     @abstractmethod
     def attack(self):
         pass
+
+
+# Шаг 2: Конкретные типы оружия
+class Sword(Weapon):
+    def attack(self):
+        return "наносит удар мечом"
+
