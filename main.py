@@ -27,15 +27,12 @@ class Axe(Weapon):
 class Monster:
     def __init__(self, health):
         self.health = health
-        self.health
-        self.h
 
     def take_damage(self, damage):
         self.health -= damage
-        self.he
-
         if self.health <= 0:
             return "Монстр побежден!"
+        else:
             return f"У монстра осталось {self.health} здоровья."
 
 
@@ -53,7 +50,7 @@ class Fighter:
         print(monster.take_damage(10))
 
 
-# Шаг 4: Реализация боя
+# Реализация пошагового боя
 def battle():
     # Создаем бойца с мечом
     fighter = Fighter("Боец", Sword())
@@ -61,20 +58,28 @@ def battle():
     # Создаем монстра с 30 единицами здоровья
     monster = Monster(30)
 
-    # Атака с мечом
-    fighter.attack(monster)
+    # Пошаговая смена оружия и атаки
+    while monster.health > 0:
+        print("\n1. Меч")
+        print("\n2. Лук")
+        print("\n3. Топор")
+        choice = input("Выберите оружие для атаки (1, 2, 3): ")
 
-    # Смена оружия на лук
-    fighter.change_weapon(Bow())
+        # Смена оружия в зависимости от выбора пользователя
+        if choice == '1':
+            fighter.change_weapon(Sword())
+        elif choice == '2':
+            fighter.change_weapon(Bow())
+        elif choice == '3':
+            fighter.change_weapon(Axe())
+        else:
+            print("Неверный выбор! Попробуйте снова.")
+            continue
 
-    # Атака с луком
-    fighter.attack(monster)
+        # Атака монстра выбранным оружием
+        fighter.attack(monster)
 
-    # Добавим еще одно оружие для примера
-    fighter.change_weapon(Axe())
-
-    # Атака с топором
-    fighter.attack(monster)
+    print("Бой завершен, монстр побежден!")
 
 
 if __name__ == "__main__":
