@@ -52,3 +52,36 @@ class Fighter:
         print(f"{self.name} {self.weapon.attack()}")
         print(monster.take_damage(10))
 
+
+# Шаг 4: Реализация боя
+def battle():
+    # Создаем бойца с мечом
+    fighter = Fighter("Боец", Sword())
+
+    # Создаем монстра с 30 единицами здоровья
+    monster = Monster(30)
+
+    # Атака с мечом
+    fighter.attack(monster)
+
+    # Смена оружия на лук
+    fighter.change_weapon(Bow())
+
+    # Атака с луком
+    fighter.attack(monster)
+
+    # Добавим еще одно оружие для примера
+    fighter.change_weapon(Axe())
+
+    # Атака с топором
+    fighter.attack(monster)
+
+
+if __name__ == "__main__":
+    battle()
+
+
+
+
+
+
